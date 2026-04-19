@@ -1,0 +1,19 @@
+
+uint8 DRIVER_STATE_INPUT_VOLTAGE_LOW_MASK = 1
+uint8 DRIVER_STATE_MOTOR_OVERHEAT_MASK = 2
+uint8 DRIVER_STATE_DRIVER_OVERLOAD_MASK = 4
+uint8 DRIVER_STATE_DRIVER_OVERHEAT_MASK = 8
+uint8 DRIVER_STATE_SENSOR_FAULT_MASK = 16
+uint8 DRIVER_STATE_DRIVER_FAULT_MASK = 32
+uint8 DRIVER_STATE_DRIVER_ENABLED_MASK = 64
+uint8 DRIVER_STATE_DRIVER_RESET_MASK = 128
+
+uint8 motor_id
+int16 rpm
+float64 current
+int32 pulse_count
+
+float32 driver_voltage
+float32 driver_temperature
+int8 motor_temperature
+uint8 driver_state
