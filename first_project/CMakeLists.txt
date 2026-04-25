@@ -3,8 +3,8 @@ project(first_project)
 
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 17)
-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
 endif()
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -24,19 +24,23 @@ find_package(tf2_ros REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 find_package(bunker_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
-find_package(builtin_interfaces REQUIRED)
 
 # ---------------------------------------------------------------------------
 # Custom messages
 # ---------------------------------------------------------------------------
-rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/tf_error_msg.msg"
-  DEPENDENCIES std_msgs builtin_interfaces
+set(msg_files
+  "msg/TfErrorMsg.msg"
 )
 
-# Needed so we can link our C++ executables against the generated types
+rosidl_generate_interfaces(${PROJECT_NAME}
+  ${msg_files}
+  DEPENDENCIES std_msgs
+)
+
 rosidl_get_typesupport_target(cpp_typesupport_target
-  ${PROJECT_NAME} "rosidl_typesupport_cpp")
+  ${PROJECT_NAME}
+  "rosidl_typesupport_cpp"
+)
 
 # ---------------------------------------------------------------------------
 # Executables
@@ -63,8 +67,10 @@ ament_target_dependencies(tf_error
   tf2_ros
   tf2_geometry_msgs
 )
-# tf_error uses our custom message, so link the typesupport target
-target_link_libraries(tf_error "${cpp_typesupport_target}")
+
+target_link_libraries(tf_error
+  "${cpp_typesupport_target}"
+)
 
 # ---------------------------------------------------------------------------
 # Install
@@ -77,7 +83,7 @@ install(TARGETS
 
 install(DIRECTORY
   launch
-  config
+  rviz
   DESTINATION share/${PROJECT_NAME}
 )
 
@@ -87,4 +93,5 @@ if(BUILD_TESTING)
 endif()
 
 ament_export_dependencies(rosidl_default_runtime)
+
 ament_package()

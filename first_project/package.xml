@@ -3,11 +3,13 @@
 <package format="3">
   <name>first_project</name>
   <version>1.0.0</version>
+
   <description>
-    Robotics course first project: odometry computation from partial
-    encoder data (linear and angular velocity) with error evaluation
-    against a GPS-based ground-truth TF.
+    Robotics course first project: odometry computation from Bunker motor RPM data,
+    publication of /project_odom and odom-to-base_link2 TF, and error evaluation
+    against the ground-truth odom-to-base_link TF from the bag.
   </description>
+
   <maintainer email="student@polimi.it">student</maintainer>
   <license>Apache-2.0</license>
 
@@ -22,7 +24,6 @@
   <depend>tf2</depend>
   <depend>tf2_ros</depend>
   <depend>tf2_geometry_msgs</depend>
-  <depend>builtin_interfaces</depend>
   <depend>bunker_msgs</depend>
 
   <exec_depend>rosidl_default_runtime</exec_depend>
