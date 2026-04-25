@@ -70,7 +70,7 @@ public:
     // The three boolean flags help fix sign conventions if the trajectory
     // looks mirrored or rotates the wrong way.
     wheel_radius_    = this->declare_parameter<double>("wheel_radius",    0.085);
-    track_width_     = this->declare_parameter<double>("track_width",     0.555);
+    track_width_     = this->declare_parameter<double>("track_width",     0.635);
     rpm_scale_       = this->declare_parameter<double>("rpm_scale",       1.0);
     invert_left_     = this->declare_parameter<bool>("invert_left",       false);
     invert_right_    = this->declare_parameter<bool>("invert_right",      false);

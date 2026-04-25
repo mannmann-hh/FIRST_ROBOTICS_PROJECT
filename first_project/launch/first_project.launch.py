@@ -16,7 +16,7 @@ def generate_launch_description():
         parameters=[
             {'use_sim_time': True},
             {'wheel_radius': 0.085},
-            {'track_width': 0.785},
+            {'track_width': 0.635},
             {'rpm_scale': 1.0}
         ]
     )
