@@ -6,7 +6,7 @@ import os
 
 def generate_launch_description():
     pkg_share = get_package_share_directory('first_project')
-    rviz_config = os.path.join(pkg_share, 'rviz', 'first_project.rviz')
+    rviz_config = os.path.join(pkg_share, 'rviz', 'project.rviz')
 
     odometer_node = Node(
         package='first_project',
